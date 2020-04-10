@@ -1,17 +1,13 @@
 from django.shortcuts import render
 
 from apps.schedule.forms import ScheduleAddForm
-from apps.restapi.resolver import api
+from apps.restapi.restapi import api_view
 
-# schedule/add
-# schedule/edit
-# schedule/
-
-@api('/api/schedule/add', methods=['POST'])
+@api_view(methods=['GET'])
 def schedule_add(request):
     return ['THIS', 'OBJECT', 'IS', 'SERIALIZED']
 
-@api('/api/schedule/forms', methods=['GET'])
+@api_view(methods=['GET'])
 def schedule_add_form(request):
-    form = forms.ScheduleForm()
+    form = ScheduleAddForm()
     return form.as_json()
