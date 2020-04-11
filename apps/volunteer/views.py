@@ -23,5 +23,5 @@ def volunteer_list(request):
 @api_view(methods=['GET'])
 def volunteer_add_form(request):
     form = VolunteerAddForm()
-    return form.as_json('POST')
+    return form.as_json('POST', csrf(request)['csrf_token'])
     

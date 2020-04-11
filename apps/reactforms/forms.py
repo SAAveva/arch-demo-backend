@@ -1,4 +1,5 @@
 from django import forms
+from django.template.context_processors import csrf
 
 class ReactForm(object):
     '''
@@ -6,8 +7,9 @@ class ReactForm(object):
     ex. ModelForm, Form
     '''
 
-    def as_json(self, method):
+    def as_json(self, method, csrftoken):
         return {
+                'csrftoken': str(csrftoken),
                 'method': method,
                 'fields': {
                     name: {
